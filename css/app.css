@@ -19,7 +19,8 @@ body
     width:100%;
     background: #000;
     z-index: 1;
-    opacity: 0.4;
+
+    animation: anim_modal_backdrop .2s linear forwards;
 }
 
 .Modal-holder
@@ -35,23 +36,36 @@ body
 }
 .Modal-box
 {
+    box-shadow: 0 5px 25px #777;
     margin: 0 auto;
-    min-height: 200px;
     max-width: 200px;
     width: 100%;
     background: #fff;
     padding: 15px;
-    border-radius: 4px;
-    box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+    border-radius: 3px;
     position: relative;
     text-align: center;
-
-    animation: anim .1s linear;
-    animation-fill-mode: forwards;
 }
+.Modal-box.connect
+{
+    animation: anim_modal .3s linear forwards;
+}
+.Modal-box.connect > div
+{
+    animation: anim_modal_connect .3s linear forwards;
+}
+.Modal-box.success > div
+{
+    animation: anim_modal_success .3s linear forwards;
+}
+
 
 button
 {
+    background: #DFDFDF;
+    color: #000;
+    border: none;
+    outline: none;
     position: relative;
     padding: 0 1em;
     letter-spacing: 1px;
@@ -64,33 +78,60 @@ button
     cursor: pointer;
 }
 
-@keyframes anim {
+@keyframes anim_modal_backdrop {
     0% {
-        -webkit-transform: scale3d(0.1,0.1,1);
-        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
-      }
-      55% {
-        -webkit-transform: scale3d(1.08,1.08,1);
-        box-shadow: 0 10px 20px rgba(0,0,0,0);
-      }
-      75% {
-        -webkit-transform: scale3d(0.95,0.95,1);
-        box-shadow: 0 0 20px rgba(0,0,0,0.9);
-      }
-      100% {
-        -webkit-transform: scale3d(1,1,1);
-        box-shadow: 0 3px 20px rgba(0,0,0,0.9);
-      }
-      /*0% {
-          display: none;
-          opacity: 0;
-          height: 0;
-      }
-      100% {
-          opacity: 1;
-          height: 200px;
-      }*/
+        opacity: 0;
+    }
+    100% {
+        opacity: .4;
+    }
 }
+
+@keyframes anim_modal {
+    0% {
+        /*box-shadow: 0 2px 5px #777;*/
+        top: 87px;
+        width: 130px;
+        height: 40px;
+    }
+    65% {
+        /*box-shadow: 0 3px 10px #777;*/
+        top: 37px;
+        width: 170px;
+        height: 100px;
+    }
+    100% {
+        /*box-shadow: 0 5px 25px #777;*/
+        top: 0;
+        width: 200px;
+        height: 150px;
+    }
+}
+
+@keyframes anim_modal_connect {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    90% {
+        opacity: 0.1;
+        transform: scale(.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes anim_modal_success {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 
 @media screen and (min-width: 992px)
 {

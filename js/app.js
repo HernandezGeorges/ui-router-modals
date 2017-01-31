@@ -1,4 +1,5 @@
-angular.module("modalApp", ['ui.router']).config(function($stateProvider){
+angular.module("modalApp", ['ui.router'])
+.config(function($stateProvider){
     $stateProvider.state("Base", {});
 
     $stateProvider.state("Modal", {
